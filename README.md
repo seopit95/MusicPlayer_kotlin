@@ -15,5 +15,5 @@ kotlin과 Android Studio를 활용한 MusicPlayer Application
 
 ## App execution video
 
-<MusicPlay>
-![Musicplay](https://user-images.githubusercontent.com/115531849/203329009-f9bca247-1d74-4d63-a5b7-1d2203cf76ce.gif)
+<MusicPlay
+![Musicplay](https://user-images.githubusercontent.com/115531849/203330648-2c89dd69-efe1-4831-9ca9-8a1ad19187fd.gif)
