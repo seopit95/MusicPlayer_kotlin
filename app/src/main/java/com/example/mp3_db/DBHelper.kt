@@ -61,7 +61,6 @@ class DBHelper(context: Context, dbName: String, version: Int):SQLiteOpenHelper(
             db.close()
         }
         return musicList
-
     }
 
     fun insertMusic(music: Music): Boolean {
