@@ -16,4 +16,4 @@ kotlin과 Android Studio를 활용한 MusicPlayer Application
 ## App execution video
 
 <MusicPlay>
-<img src = ![Musicplay](https://user-images.githubusercontent.com/115531849/203329009-f9bca247-1d74-4d63-a5b7-1d2203cf76ce.gif) width="70%" height="70%">
+![Musicplay](https://user-images.githubusercontent.com/115531849/203329009-f9bca247-1d74-4d63-a5b7-1d2203cf76ce.gif)
