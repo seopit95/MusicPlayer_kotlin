@@ -15,7 +15,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 class Music(val id: String?, val title: String?, val artist: String?, val albumId: String?, val duration: Int?, var likes: Int?, var repeat: Int?): Parcelable {
-    //Serializable -> Parcelable로 하는 이유 : 속도처리, 용량처리
     companion object : Parceler<Music> {
         override fun create(parcel: Parcel): Music {
             return Music(parcel)
@@ -41,30 +40,23 @@ class Music(val id: String?, val title: String?, val artist: String?, val albumI
         parcel.readInt(),
         parcel.readInt()
     )
-    //앨범 Uri 가져오기
+
     fun getAlbumUri(): Uri {
         return Uri.parse("content://media/external/audio/albumart/" + albumId)
     }
-    //음악 Uri 가져오기
+
     fun getMusicUri(): Uri {
-        //음악의 위치(이미지 데이터)를 가져와서 화면에 출력하기 위한 방법
         return Uri.withAppendedPath(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id)
     }
-    //음악앨범의 비트맵을 가져와서 원하는 사이즈로 비트맵을 만든다.
-    //음악파일에 앨범이미지가 따로 없을 수 있으니 리턴값인 Bitmap에 null safety(?)을 넣는다
+
     fun getAlbumImage(context: Context, albumImageSize: Int): Bitmap? {
         val contentResolver: ContentResolver = context.contentResolver
-        //모듈화했던 앨범 uri(경로) 가져오기
         val uri = getAlbumUri()
-        //비트맵 옵션
         val options = BitmapFactory.Options()
 
         if (uri != null) {
-            //파일 생성
             var parceFileDescriptor: ParcelFileDescriptor? = null
-            //외부에서 가져오기때문에 try,catch 사용
             try {
-                //앨범uri를 파일로 가져온다.
                 parceFileDescriptor = contentResolver.openFileDescriptor(uri, "r")
                 var bitmap = BitmapFactory.decodeFileDescriptor(
                     parceFileDescriptor!!.fileDescriptor,
@@ -72,7 +64,6 @@ class Music(val id: String?, val title: String?, val artist: String?, val albumI
                     options
                 )
 
-                //비트맵을 가져왔는데 원하는 사이즈가 아닐 경우
                 if (bitmap != null) {
                     val tempBitmap =
                         Bitmap.createScaledBitmap(bitmap, albumImageSize, albumImageSize, true)

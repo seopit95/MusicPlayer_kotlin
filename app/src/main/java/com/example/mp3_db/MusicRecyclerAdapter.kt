@@ -11,7 +11,6 @@ import com.example.mp3_db.databinding.ItemRecyclerviewBinding
 import java.text.SimpleDateFormat
 
 class MusicRecyclerAdapter(val context: Context, val musicList: MutableList<Music>?):RecyclerView.Adapter<MusicRecyclerAdapter.CustomViewHolder>() {
-    //정적멤버상수 (=final)
     companion object{
         val ALBUM_SIZE = 300
     }
@@ -38,16 +37,14 @@ class MusicRecyclerAdapter(val context: Context, val musicList: MutableList<Musi
             1 -> binding.ivlike.setImageResource(R.drawable.fulllike)
         }
 
-        //이벤트처리
         binding.root.setOnClickListener{
             val playList: ArrayList<Parcelable>? = musicList as ArrayList<Parcelable>
             val intent = Intent(binding.root.context, MusicPlayerActivity::class.java)
             intent.putExtra("playList", playList)
             intent.putExtra("position", position)
-            //intent.putExtra("music", music) 음악을 하나만 주는 것 (그래서 앞,뒤로가기가 안됨)
             binding.root.context.startActivity(intent)
         }
-        //이벤트처리 좋아요 눌렀을 때 데이터베이스에 좋아요가 등록되어야됨.
+
         binding.ivlike.setOnClickListener{
             if(music?.likes == 0){
                 binding.ivlike.setImageResource(R.drawable.fulllike)
@@ -62,7 +59,7 @@ class MusicRecyclerAdapter(val context: Context, val musicList: MutableList<Musi
                 if(flag == false){
                     Log.d("mp3_db", "MusicRecyclerAdapter.onBindViewHolder() :업데이트 실패 ${music.toString()}")
                 }else{
-                    notifyDataSetChanged() // flag가 true면 업데이트한 값으로 데이터를 설정한다.
+                    notifyDataSetChanged() 
                 }
             }
         }

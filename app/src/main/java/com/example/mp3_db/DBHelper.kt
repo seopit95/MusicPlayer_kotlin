@@ -6,8 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 
-class DBHelper(context: Context, dbName: String, version: Int):SQLiteOpenHelper(context, dbName, null, version) { // Context = 상속
-    //DBHelper 객체가 처음으로 만들어질 때 딱 한 번만 실행된다.
+class DBHelper(context: Context, dbName: String, version: Int):SQLiteOpenHelper(context, dbName, null, version) {
     override fun onCreate(db: SQLiteDatabase?) {
         val query = """
             create table musicTBL(
@@ -16,12 +15,12 @@ class DBHelper(context: Context, dbName: String, version: Int):SQLiteOpenHelper(
             artist text not null,
             albumId text not null,
             duration integer not null,
-            likes integer)
+            likes integer,
+            repeat integer)
         """.trimIndent()
         db?.execSQL(query)
     }
 
-    //버전이 바뀌었을 때 불러지는 콜백함수임.
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         val query = """
             drop table musicTBL
@@ -38,7 +37,6 @@ class DBHelper(context: Context, dbName: String, version: Int):SQLiteOpenHelper(
         """.trimIndent()
         val db = this.readableDatabase
 
-        //DB쪽이라 오류가 발생할 수 있음. 그래서 try catch 사용
         try {
             cursor = db.rawQuery(query, null)
             if(cursor.count > 0){
@@ -49,8 +47,7 @@ class DBHelper(context: Context, dbName: String, version: Int):SQLiteOpenHelper(
                     val albumID = cursor.getString(3)
                     val duration = cursor.getInt(4)
                     val likes = cursor.getInt(5)
-                    val repeat = cursor.getInt(6)
-                    val music = Music(id, title, artist, albumID,duration,likes, repeat)
+                    val music = Music(id, title, artist, albumID,duration,likes)
                     musicList?.add(music)
                 }
             }else{
@@ -72,10 +69,9 @@ class DBHelper(context: Context, dbName: String, version: Int):SQLiteOpenHelper(
         val query = """
             insert into musicTBL(id, title, artist, albumId, duration, likes)
             values ('${music.id}', '${music.title}', '${music.artist}', '${music.albumId}', ${music.duration}, ${music.likes}) 
-        """.trimIndent() // duration과 likes는 Int이기 때문에 ''가 필요없음
+        """.trimIndent() 
         val db = this.writableDatabase
 
-        //DB쪽이라 오류가 발생할 수 있음. 그래서 try catch 사용
         try {
             db.execSQL(query)
             flag = true
@@ -92,10 +88,9 @@ class DBHelper(context: Context, dbName: String, version: Int):SQLiteOpenHelper(
         var flag = false
         val query = """
             update musicTBL set likes = ${music.likes} where id = '${music.id}'
-        """.trimIndent() // duration과 likes는 Int이기 때문에 ''가 필요없음
+        """.trimIndent()
         val db = this.writableDatabase
 
-        //DB쪽이라 오류가 발생할 수 있음. 그래서 try catch 사용
         try {
             db.execSQL(query)
             flag = true
@@ -116,7 +111,6 @@ class DBHelper(context: Context, dbName: String, version: Int):SQLiteOpenHelper(
                     """.trimIndent() // like = 유사한, % = 포함
         val db = this.readableDatabase
 
-        //DB쪽이라 오류가 발생할 수 있음. 그래서 try catch 사용
         try {
             cursor = db.rawQuery(query, null)
             if(cursor.count > 0){
@@ -127,8 +121,7 @@ class DBHelper(context: Context, dbName: String, version: Int):SQLiteOpenHelper(
                     val albumID = cursor.getString(3)
                     val duration = cursor.getInt(4)
                     val likes = cursor.getInt(5)
-                    val repeat = cursor.getInt(6)
-                    val music = Music(id, title, artist, albumID,duration,likes,repeat)
+                    val music = Music(id, title, artist, albumID,duration,likes)
                     musicList?.add(music)
                 }
             }else{
@@ -152,7 +145,6 @@ class DBHelper(context: Context, dbName: String, version: Int):SQLiteOpenHelper(
         """.trimIndent()
         val db = this.readableDatabase
 
-        //DB쪽이라 오류가 발생할 수 있음. 그래서 try catch 사용
         try {
             cursor = db.rawQuery(query, null)
             if(cursor.count > 0){
@@ -163,8 +155,7 @@ class DBHelper(context: Context, dbName: String, version: Int):SQLiteOpenHelper(
                     val albumID = cursor.getString(3)
                     val duration = cursor.getInt(4)
                     val likes = cursor.getInt(5)
-                    val repeat = cursor.getInt(6)
-                    val music = Music(id, title, artist, albumID,duration,likes,repeat)
+                    val music = Music(id, title, artist, albumID,duration,likes)
                     musicList?.add(music)
                 }
             }else{
