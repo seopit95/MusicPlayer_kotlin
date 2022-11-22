@@ -31,7 +31,7 @@ kotlin과 Android Studio를 활용한 MusicPlayer Application
 <img src = "https://user-images.githubusercontent.com/115531849/203333231-f3264bd6-ae83-47fc-a3e9-d03070526ce3.gif" width="40%" height="40%">
 
 ### Player Event Video content
- - 찜(하트) 버튼을 클릭하면 해당 곡의 MusicPlayer에도 좋아요가 표시되도롯 불러옴
+ - 찜(하트) 버튼을 클릭하면 해당 곡의 MusicPlayer에도 좋아요가 표시되도록 불러옴
  - 찜(하트)이 된 곡들은 메뉴 기능을 통해 찜한 재생목록에서 한 눈에 볼 수 있도록 기능추가
  - 전체 재생목록을 클릭하면 전체 곡들을 불러옴
- - 검색 기능 추가(글자가 입력되는 순간마다 검색기능 발생
+ - 검색 기능 추가(글자가 입력되는 순간마다 검색기능 발생)
