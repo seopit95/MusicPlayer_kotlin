@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MusicPlayerActivity">
+
+    <ImageView
+        android:id="@+id/ivPlay"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar"
+        app:layout_constraintStart_toStartOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:srcCompat="@drawable/playerplay" />
+
+    <TextView
+        android:id="@+id/tvPlayerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="타이틀"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPlayerArtist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:text="아티스트"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvPlayerTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvPlayerTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivPlayerAlbum"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvPlayerArtist"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/tvPlayerArtist"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayerArtist"
+        app:srcCompat="@drawable/albumpicture" />
+
+    <ImageButton
+        android:id="@+id/ivPlayerlike"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="fitCenter"
+        android:background="@color/white"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="@+id/ivPlayerAlbum"
+        app:layout_constraintTop_toBottomOf="@+id/ivPlayerAlbum"
+        app:srcCompat="@drawable/emptylike" />
+
+    <ImageButton
+        android:id="@+id/ivPlayerRepeat"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="100dp"
+        android:scaleType="fitCenter"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPlayerlike"
+        app:layout_constraintEnd_toEndOf="@+id/ivPlayerAlbum"
+        app:layout_constraintTop_toTopOf="@+id/ivPlayerlike"
+        app:srcCompat="@drawable/playerrepeat" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivPlayerAlbum" />
+
+    <TextView
+        android:id="@+id/tvPlayerDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="00:00"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+    <TextView
+        android:id="@+id/tvTotalDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="00:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+    <ImageButton
+        android:id="@+id/ivPlayBefore"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="fitCenter"
+        android:layout_marginEnd="48dp"
+        android:adjustViewBounds="true"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPlay"
+        app:layout_constraintEnd_toStartOf="@+id/ivPlay"
+        app:layout_constraintTop_toTopOf="@+id/ivPlay"
+        app:srcCompat="@drawable/previouplay" />
+
+    <ImageView
+        android:id="@+id/ivPlayNext"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPlay"
+        app:layout_constraintStart_toEndOf="@+id/ivPlay"
+        app:layout_constraintTop_toTopOf="@+id/ivPlay"
+        app:srcCompat="@drawable/nextplay" />
+
+    <ImageButton
+        android:id="@+id/ivPlayerList"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_playlist_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
